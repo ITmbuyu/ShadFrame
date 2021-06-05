@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ShadFrame.Models.SupplierPart>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Parts.Part_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Supplier.Supplier_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartSupplied_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartSupplied_Quantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parts.Part_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Supplier.Supplier_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartSupplied_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartSupplied_Quantity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SupplierPartId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SupplierPartId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SupplierPartId })
+        </td>
+    </tr>
+}
+
+</table>

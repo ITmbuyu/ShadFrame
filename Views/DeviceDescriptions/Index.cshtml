@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ShadFrame.Models.DeviceDescription>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeviceName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DeviceDescriptionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DeviceDescriptionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DeviceDescriptionId })
+        </td>
+    </tr>
+}
+
+</table>

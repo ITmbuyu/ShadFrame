@@ -1,0 +1,99 @@
+﻿@model IEnumerable<ShadFrame.Models.Request>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Colour.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceDescription.DeviceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceProblem.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentStatus.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Storage.StorageCapacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMEI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovalOfRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovalOfCharge)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Colour.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeviceDescription.DeviceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeviceProblem.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentStatus.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Storage.StorageCapacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMEI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovalOfRequest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovalOfCharge)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RequestId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RequestId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RequestId })
+        </td>
+    </tr>
+}
+
+</table>

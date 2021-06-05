@@ -1,0 +1,82 @@
+﻿@model ShadFrame.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpWage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpWage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeRole)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

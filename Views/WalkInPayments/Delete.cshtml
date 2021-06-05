@@ -1,0 +1,88 @@
+﻿@model ShadFrame.Models.WalkInPayments
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>WalkInPayments</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.paymentmethod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paymentmethod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CardNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CVVnumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CVVnumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTimeofpayment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTimeofpayment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackingNumberOfRequest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrackingNumberOfRequest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Priceofrepair)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Priceofrepair)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

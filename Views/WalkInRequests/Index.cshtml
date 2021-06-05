@@ -1,0 +1,105 @@
+﻿@model IEnumerable<ShadFrame.Models.WalkInRequest>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Colour.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceDescription.DeviceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceProblem.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentStatus.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Storage.StorageCapacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WalkInTimes.WalkInTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMEI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WalkInDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovelCharge)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Colour.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeviceDescription.DeviceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeviceProblem.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentStatus.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Storage.StorageCapacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WalkInTimes.WalkInTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMEI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WalkInDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovelCharge)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WalkInRequestId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WalkInRequestId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WalkInRequestId })
+        </td>
+    </tr>
+}
+
+</table>

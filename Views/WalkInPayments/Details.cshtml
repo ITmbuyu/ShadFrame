@@ -1,0 +1,82 @@
+﻿@model ShadFrame.Models.WalkInPayments
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WalkInPayments</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.paymentmethod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paymentmethod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CardNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CVVnumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CVVnumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTimeofpayment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTimeofpayment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackingNumberOfRequest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrackingNumberOfRequest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Priceofrepair)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Priceofrepair)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WalkInPaymentsId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

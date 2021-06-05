@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ShadFrame.Models.WalkInPayments>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.paymentmethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CardNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CVVnumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTimeofpayment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrackingNumberOfRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priceofrepair)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.paymentmethod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CardNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CVVnumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpiryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTimeofpayment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrackingNumberOfRequest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priceofrepair)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WalkInPaymentsId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WalkInPaymentsId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WalkInPaymentsId })
+        </td>
+    </tr>
+}
+
+</table>

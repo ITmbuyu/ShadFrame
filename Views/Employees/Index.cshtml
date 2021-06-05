@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ShadFrame.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpWage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeRole)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpSurname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpWage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeRole)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EmployeeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeId })
+        </td>
+    </tr>
+}
+
+</table>

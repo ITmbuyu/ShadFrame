@@ -1,0 +1,130 @@
+﻿@model ShadFrame.Models.DeviceStatus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DeviceStatus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairStatus.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairStatus.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceProblem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeviceProblem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeviceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Colour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Colour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMEI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMEI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TechnicianId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TechnicianId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovalOfRequest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalOfRequest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovalOfCharge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalOfCharge)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TrackingNumber }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

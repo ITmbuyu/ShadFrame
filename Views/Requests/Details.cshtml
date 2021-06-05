@@ -1,0 +1,114 @@
+﻿@model ShadFrame.Models.Request
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Request</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Colour.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Colour.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceDescription.DeviceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeviceDescription.DeviceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceProblem.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeviceProblem.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentStatus.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentStatus.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Storage.StorageCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Storage.StorageCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMEI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMEI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovalOfRequest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalOfRequest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovalOfCharge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalOfCharge)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RequestId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
