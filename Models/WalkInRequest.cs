@@ -38,8 +38,8 @@ namespace ShadFrame.Models
         //FK - WalkInTime Slot
         public int WalkInTimesId { get; set; }
         public virtual WalkInTimes WalkInTimes { get; set; }
+
         public double Price { get; set; }
-        public DateTime RequestDateTime { get; set; }
 
         public string UserId { get; set; }
 

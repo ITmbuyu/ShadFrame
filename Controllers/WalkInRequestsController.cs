@@ -8,6 +8,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ShadFrame.Models;
+using Microsoft.AspNet.Identity;
+using System.Web.Routing;
+using System.Net.Mail;
 
 namespace ShadFrame.Controllers
 {
@@ -58,6 +61,39 @@ namespace ShadFrame.Controllers
         {
             if (ModelState.IsValid)
             {
+                walkInRequest.BrandName = db.DeviceDescriptions.Find(walkInRequest.DeviceDescriptionId).Brand.BrandName;
+                walkInRequest.WalkInDate = DateTime.Now;
+                walkInRequest.Price = 0;
+                walkInRequest.PaymentStatus = db.PaymentStatus.Find(1);
+                walkInRequest.UserId = User.Identity.GetUserId();
+                walkInRequest.ApprovelCharge = false;
+                db.WalkInRequests.Add(walkInRequest);
+                db.SaveChanges();
+
+                DeviceStatusWalkIns status = new DeviceStatusWalkIns();
+                status.TrackingNumber = "WSTR" + Convert.ToString(walkInRequest.WalkInRequestId);
+                status.Brand = walkInRequest.BrandName;
+                status.DeviceProblem = db.DeviceProblems.Find(walkInRequest.DeviceProblemId).Description;//request.DeviceProblem.Description;
+                status.DeviceName = walkInRequest.DeviceDescription.DeviceName;
+                //variable name=  databaseinstance.find(primarykeyofrespectivetable).itemlookingfor
+                status.Capacity = db.Storage.Find(walkInRequest.StorageId).StorageCapacity;
+                status.Colour = db.Colours.Find(walkInRequest.ColourId).Name;
+                status.IMEI = walkInRequest.IMEI;
+                status.Price = walkInRequest.Price;
+                status.PaymentStatus = db.PaymentStatus.Find(walkInRequest.PaymentStatusId).Status;
+                status.WalkInDate = walkInRequest.WalkInDate;
+                status.WalkInTime = db.WalkInTimes.Find(walkInRequest.WalkInTimesId).WalkInTime;
+                status.WalkInStatus = "Please Drop your Device In for Repair on " + Convert.ToString(status.WalkInDate) + "Between " + Convert.ToString(status.WalkInTime);
+                status.RepairStatus = db.RepairStatuses.Find(4);
+                status.RequestDateTime = walkInRequest.WalkInDate;
+                status.UserId = walkInRequest.UserId;
+                status.ApprovalOfCharge = walkInRequest.ApprovelCharge;
+                //status.StatusId = 1;
+                db.DeviceStatusesWalkIns.Add(status);
+                db.SaveChanges();
+                WalkInSendEmail(walkInRequest, status);
+                return RedirectToAction("Details", new RouteValueDictionary(
+                    new { Controller = "WalkInRequests", Action = "Details", Id = walkInRequest.WalkInRequestId }));
                 db.WalkInRequests.Add(walkInRequest);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -71,6 +107,56 @@ namespace ShadFrame.Controllers
             ViewBag.WalkInTimesId = new SelectList(db.WalkInTimes, "WalkInTimesId", "WalkInTime", walkInRequest.WalkInTimesId);
             return View(walkInRequest);
         }
+
+        //method to send email 
+        public void WalkInSendEmail(WalkInRequest walkInRequest, DeviceStatusWalkIns status)
+        {
+            var user = db.Users.Find(walkInRequest.UserId);
+            var email = User.Identity.GetUserName();
+            string message =
+                $"Hi there, \n\n" +
+                $"You have made a WalkIn Booking with Shadrack Phone Repair. Here are the details of the booking: \n\n" +
+                $"Your Tracking Number is: {status.TrackingNumber} \n" +
+                $"Your Request Number is: {walkInRequest.WalkInRequestId} \n" +
+                $"Date of Booking is: {walkInRequest.WalkInDate} \n" +
+                $"Time of Booking is: {walkInRequest.WalkInDate} \n" +
+                $"Here are the details of the Device to be repaired: \n\n" +
+                $"Your Device Brand is: {walkInRequest.BrandName} \n" +
+                $"Your Device Name is: {walkInRequest.DeviceDescription.DeviceName} \n" +
+                $"Your Device Storage is: {db.Storage.Find(walkInRequest.StorageId).StorageCapacity} \n" +
+                $"Colour Of Device is: { db.Colours.Find(walkInRequest.ColourId).Name} \n" +
+                $"Device IMEI Number is: {walkInRequest.IMEI} \n" +
+                $"Problem with device: {db.DeviceProblems.Find(walkInRequest.DeviceProblemId).Description} \n" +
+                $"Price of repair R: {walkInRequest.Price} \n\n" +
+                $"Looking foward to seeing you, please check dashboard for status of repair \n\n" +
+                $"Kind Regards";
+
+            // Sendemail
+            var senderEmail = new MailAddress("shadrachphonerepair@gmail.com", "Sharac Phone Repair Tech");
+            var recieverMail = new MailAddress(email, "Client");
+            var password = "Aigdloves2Nar1";
+            var sub = $"New Request #{walkInRequest.WalkInRequestId}";
+            var body = message;
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(senderEmail.Address, password)
+            };
+            using (var mess = new MailMessage(senderEmail, recieverMail)
+            {
+                Subject = sub,
+                Body = body
+            })
+            {
+                smtp.Send(mess);
+            }
+        }
+
 
         // GET: WalkInRequests/Edit/5
         public async Task<ActionResult> Edit(int? id)

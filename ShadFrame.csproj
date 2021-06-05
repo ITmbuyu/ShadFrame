@@ -205,6 +205,10 @@
     <Compile Include="Migrations\202106051024438_StatusApprovalsAdded.Designer.cs">
       <DependentUpon>202106051024438_StatusApprovalsAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106051337019_removalofwalkintime.cs" />
+    <Compile Include="Migrations\202106051337019_removalofwalkintime.Designer.cs">
+      <DependentUpon>202106051337019_removalofwalkintime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -408,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106051024438_StatusApprovalsAdded.resx">
       <DependentUpon>202106051024438_StatusApprovalsAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106051337019_removalofwalkintime.resx">
+      <DependentUpon>202106051337019_removalofwalkintime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
