@@ -38,7 +38,7 @@ namespace ShadFrame.Models
         public DateTime RequestDateTime { get; set; }
         public string UserId { get; set; }
         public string TechnicianId { get; set; }
-        public bool ApprovalOfRequest { get; set; }
-        public bool ApprovalOfCharge { get; set; }
+        public string ApprovalOfRequest { get; set; }
+        public string ApprovalOfCharge { get; set; }
     }
 }

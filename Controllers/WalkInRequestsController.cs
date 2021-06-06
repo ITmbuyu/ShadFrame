@@ -21,7 +21,7 @@ namespace ShadFrame.Controllers
         // GET: WalkInRequests
         public async Task<ActionResult> Index()
         {
-            var walkInRequests = db.WalkInRequests.Include(w => w.Colour).Include(w => w.DeviceDescription).Include(w => w.DeviceProblem).Include(w => w.PaymentStatus).Include(w => w.Storage).Include(w => w.WalkInTimes);
+            var walkInRequests = db.WalkInRequests.Include(w => w.Colour).Include(w => w.DeviceDescription).Include(w => w.DeviceProblem).Include(w => w.PaymentStatus).Include(w => w.Storage).Include(w => w.WalkInTimes).Include(r => r.CApprovalMessages);
             return View(await walkInRequests.ToListAsync());
         }
 
@@ -49,6 +49,7 @@ namespace ShadFrame.Controllers
             ViewBag.PaymentStatusId = new SelectList(db.PaymentStatus, "PaymentStatusId", "Status");
             ViewBag.StorageId = new SelectList(db.Storage, "StorageId", "StorageCapacity");
             ViewBag.WalkInTimesId = new SelectList(db.WalkInTimes, "WalkInTimesId", "WalkInTime");
+            ViewBag.CApprovalMessagesId = new SelectList(db.CApprovalMessages, "CApprovalMessagesId", "CApprovalMessages");
             return View();
         }
 
@@ -66,7 +67,7 @@ namespace ShadFrame.Controllers
                 walkInRequest.Price = 0;
                 walkInRequest.PaymentStatus = db.PaymentStatus.Find(1);
                 walkInRequest.UserId = User.Identity.GetUserId();
-                walkInRequest.ApprovelCharge = false;
+                walkInRequest.CApprovalMessages = db.CApprovalMessages.Find(1);
                 db.WalkInRequests.Add(walkInRequest);
                 db.SaveChanges();
 
@@ -87,7 +88,7 @@ namespace ShadFrame.Controllers
                 status.RepairStatus = db.RepairStatuses.Find(4);
                 status.RequestDateTime = walkInRequest.WalkInDate;
                 status.UserId = walkInRequest.UserId;
-                status.ApprovalOfCharge = walkInRequest.ApprovelCharge;
+                status.ApprovalOfCharge = db.CApprovalMessages.Find(walkInRequest.CApprovalMessagesId).CMessages;
                 //status.StatusId = 1;
                 db.DeviceStatusesWalkIns.Add(status);
                 db.SaveChanges();
@@ -105,6 +106,7 @@ namespace ShadFrame.Controllers
             ViewBag.PaymentStatusId = new SelectList(db.PaymentStatus, "PaymentStatusId", "Status", walkInRequest.PaymentStatusId);
             ViewBag.StorageId = new SelectList(db.Storage, "StorageId", "StorageCapacity", walkInRequest.StorageId);
             ViewBag.WalkInTimesId = new SelectList(db.WalkInTimes, "WalkInTimesId", "WalkInTime", walkInRequest.WalkInTimesId);
+            ViewBag.CApprovalMessagesId = new SelectList(db.CApprovalMessages, "CApprovalMessagesId", "CApprovalMessages");
             return View(walkInRequest);
         }
 
@@ -115,7 +117,7 @@ namespace ShadFrame.Controllers
             var email = User.Identity.GetUserName();
             string message =
                 $"Hi there, \n\n" +
-                $"You have made a WalkIn Booking with Shadrack Phone Repair. Here are the details of the booking: \n\n" +
+                $" Thank You for choosing to repair your device with Shadrack Phone Repair, you have made a WalkIn Booking. Here are the details of the booking: \n\n" +
                 $"Your Tracking Number is: {status.TrackingNumber} \n" +
                 $"Your Request Number is: {walkInRequest.WalkInRequestId} \n" +
                 $"Date of Booking is: {walkInRequest.WalkInDate} \n" +
@@ -127,8 +129,8 @@ namespace ShadFrame.Controllers
                 $"Colour Of Device is: { db.Colours.Find(walkInRequest.ColourId).Name} \n" +
                 $"Device IMEI Number is: {walkInRequest.IMEI} \n" +
                 $"Problem with device: {db.DeviceProblems.Find(walkInRequest.DeviceProblemId).Description} \n" +
-                $"Price of repair R: {walkInRequest.Price} \n\n" +
-                $"Looking foward to seeing you, please check dashboard for status of repair \n\n" +
+                
+                $"Looking foward to seeing you, please check dashboard for status of repair and for the estimated charge of repair \n\n" +
                 $"Kind Regards";
 
             // Sendemail
@@ -176,6 +178,7 @@ namespace ShadFrame.Controllers
             ViewBag.PaymentStatusId = new SelectList(db.PaymentStatus, "PaymentStatusId", "Status", walkInRequest.PaymentStatusId);
             ViewBag.StorageId = new SelectList(db.Storage, "StorageId", "StorageCapacity", walkInRequest.StorageId);
             ViewBag.WalkInTimesId = new SelectList(db.WalkInTimes, "WalkInTimesId", "WalkInTime", walkInRequest.WalkInTimesId);
+            ViewBag.CApprovalMessagesId = new SelectList(db.CApprovalMessages, "CApprovalMessagesId", "CApprovalMessages");
             return View(walkInRequest);
         }
 
@@ -198,6 +201,7 @@ namespace ShadFrame.Controllers
             ViewBag.PaymentStatusId = new SelectList(db.PaymentStatus, "PaymentStatusId", "Status", walkInRequest.PaymentStatusId);
             ViewBag.StorageId = new SelectList(db.Storage, "StorageId", "StorageCapacity", walkInRequest.StorageId);
             ViewBag.WalkInTimesId = new SelectList(db.WalkInTimes, "WalkInTimesId", "WalkInTime", walkInRequest.WalkInTimesId);
+            ViewBag.CApprovalMessagesId = new SelectList(db.CApprovalMessages, "CApprovalMessagesId", "CApprovalMessages");
             return View(walkInRequest);
         }
 

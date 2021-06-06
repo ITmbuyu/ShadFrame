@@ -168,7 +168,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApprovalMessagesController.cs" />
     <Compile Include="Controllers\BrandsController.cs" />
+    <Compile Include="Controllers\CApprovalMessagesController.cs" />
     <Compile Include="Controllers\ColoursController.cs" />
     <Compile Include="Controllers\DeviceDescriptionsController.cs" />
     <Compile Include="Controllers\DeviceProblemsController.cs" />
@@ -177,6 +179,7 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PartsCollectionsController.cs" />
     <Compile Include="Controllers\PartsController.cs" />
     <Compile Include="Controllers\PaymentStatusController.cs" />
     <Compile Include="Controllers\RepairStatusController.cs" />
@@ -209,9 +212,19 @@
     <Compile Include="Migrations\202106051337019_removalofwalkintime.Designer.cs">
       <DependentUpon>202106051337019_removalofwalkintime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106052119016_changeofapprovals.cs" />
+    <Compile Include="Migrations\202106052119016_changeofapprovals.Designer.cs">
+      <DependentUpon>202106052119016_changeofapprovals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106060049121_PartsandEmails.cs" />
+    <Compile Include="Migrations\202106060049121_PartsandEmails.Designer.cs">
+      <DependentUpon>202106060049121_PartsandEmails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApprovalMessages.cs" />
     <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\CApprovalMessages.cs" />
     <Compile Include="Models\Colour.cs" />
     <Compile Include="Models\DeviceDescription.cs" />
     <Compile Include="Models\DeviceProblem.cs" />
@@ -220,7 +233,9 @@
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderNewParts.cs" />
     <Compile Include="Models\Parts.cs" />
+    <Compile Include="Models\PartsCollection.cs" />
     <Compile Include="Models\PaymentStatus.cs" />
     <Compile Include="Models\RepairStatus.cs" />
     <Compile Include="Models\Request.cs" />
@@ -257,6 +272,47 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Temp\css\animate.css" />
+    <Content Include="Temp\css\bootstrap.css" />
+    <Content Include="Temp\css\clndr.css" />
+    <Content Include="Temp\css\custom.css" />
+    <Content Include="Temp\css\font-awesome.css" />
+    <Content Include="Temp\css\jqvmap.css" />
+    <Content Include="Temp\css\style.css" />
+    <Content Include="Temp\fonts\fontawesome-webfont.svg" />
+    <Content Include="Temp\images\1.png" />
+    <Content Include="Temp\images\2.png" />
+    <Content Include="Temp\images\3.png" />
+    <Content Include="Temp\images\a.png" />
+    <Content Include="Temp\images\i1.png" />
+    <Content Include="Temp\images\i2.png" />
+    <Content Include="Temp\images\i3.png" />
+    <Content Include="Temp\images\i4.png" />
+    <Content Include="Temp\images\img1.png" />
+    <Content Include="Temp\images\lock.png" />
+    <Content Include="Temp\images\logo.png" />
+    <Content Include="Temp\images\tick.png" />
+    <Content Include="Temp\images\user.png" />
+    <Content Include="Temp\js\bootstrap.js" />
+    <Content Include="Temp\js\Chart.js" />
+    <Content Include="Temp\js\classie.js" />
+    <Content Include="Temp\js\clndr.js" />
+    <Content Include="Temp\js\custom.js" />
+    <Content Include="Temp\js\jquery-1.11.1.min.js" />
+    <Content Include="Temp\js\jquery.circlechart.js" />
+    <Content Include="Temp\js\jquery.nicescroll.js" />
+    <Content Include="Temp\js\jquery.vmap.js" />
+    <Content Include="Temp\js\jquery.vmap.sampledata.js" />
+    <Content Include="Temp\js\jquery.vmap.world.js" />
+    <Content Include="Temp\js\metisMenu.min.js" />
+    <Content Include="Temp\js\modernizr.custom.js" />
+    <Content Include="Temp\js\moment-2.2.1.js" />
+    <Content Include="Temp\js\scripts.js" />
+    <Content Include="Temp\js\site.js" />
+    <Content Include="Temp\js\skycons.js" />
+    <Content Include="Temp\js\underscore-min.js" />
+    <Content Include="Temp\js\validator.min.js" />
+    <Content Include="Temp\js\wow.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -341,11 +397,6 @@
     <Content Include="Views\RepairStatus\Details.cshtml" />
     <Content Include="Views\RepairStatus\Edit.cshtml" />
     <Content Include="Views\RepairStatus\Index.cshtml" />
-    <Content Include="Views\Requests\Create.cshtml" />
-    <Content Include="Views\Requests\Delete.cshtml" />
-    <Content Include="Views\Requests\Details.cshtml" />
-    <Content Include="Views\Requests\Edit.cshtml" />
-    <Content Include="Views\Requests\Index.cshtml" />
     <Content Include="Views\RequestPayments\Create.cshtml" />
     <Content Include="Views\RequestPayments\Delete.cshtml" />
     <Content Include="Views\RequestPayments\Details.cshtml" />
@@ -386,6 +437,33 @@
     <Content Include="Views\WalkInTimes\Details.cshtml" />
     <Content Include="Views\WalkInTimes\Edit.cshtml" />
     <Content Include="Views\WalkInTimes\Index.cshtml" />
+    <Content Include="Views\ApprovalMessages\Create.cshtml" />
+    <Content Include="Views\ApprovalMessages\Delete.cshtml" />
+    <Content Include="Views\ApprovalMessages\Details.cshtml" />
+    <Content Include="Views\ApprovalMessages\Edit.cshtml" />
+    <Content Include="Views\ApprovalMessages\Index.cshtml" />
+    <Content Include="Views\CApprovalMessages\Create.cshtml" />
+    <Content Include="Views\CApprovalMessages\Delete.cshtml" />
+    <Content Include="Views\CApprovalMessages\Details.cshtml" />
+    <Content Include="Views\CApprovalMessages\Edit.cshtml" />
+    <Content Include="Views\CApprovalMessages\Index.cshtml" />
+    <Content Include="Views\Requests\Create.cshtml" />
+    <Content Include="Views\Requests\Delete.cshtml" />
+    <Content Include="Views\Requests\Details.cshtml" />
+    <Content Include="Views\Requests\Edit.cshtml" />
+    <Content Include="Views\Requests\Index.cshtml" />
+    <Content Include="Temp\fonts\fontawesome-webfont.eot" />
+    <Content Include="Temp\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Temp\fonts\fontawesome-webfont.woff" />
+    <Content Include="Temp\fonts\FontAwesome.otf" />
+    <Content Include="Temp\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Temp\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\PartsCollections\Create.cshtml" />
+    <Content Include="Views\PartsCollections\Delete.cshtml" />
+    <Content Include="Views\PartsCollections\Details.cshtml" />
+    <Content Include="Views\PartsCollections\Edit.cshtml" />
+    <Content Include="Views\PartsCollections\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -415,6 +493,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106051337019_removalofwalkintime.resx">
       <DependentUpon>202106051337019_removalofwalkintime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106052119016_changeofapprovals.resx">
+      <DependentUpon>202106052119016_changeofapprovals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106060049121_PartsandEmails.resx">
+      <DependentUpon>202106060049121_PartsandEmails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -47,7 +47,11 @@ namespace ShadFrame.Models
         public int PaymentStatusId { get; set; }
         public virtual PaymentStatus PaymentStatus { get; set; }
 
-        public bool ApprovelCharge { get; set; }
+        //FK - Charge Approval
+        public int CApprovalMessagesId { get; set; }
+        public virtual CApprovalMessages CApprovalMessages { get; set; }
+
+        public string UserEmail { get; set; }
 
 
         //public double CalcPrice()

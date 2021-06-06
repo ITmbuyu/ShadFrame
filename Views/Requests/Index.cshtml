@@ -12,6 +12,12 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.ApprovalMessages.AMessages)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CApprovalMessages.CMessages)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Colour.Name)
         </th>
         <th>
@@ -41,17 +47,17 @@
         <th>
             @Html.DisplayNameFor(model => model.UserId)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApprovalOfRequest)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApprovalOfCharge)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovalMessages.AMessages)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CApprovalMessages.CMessages)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Colour.Name)
         </td>
@@ -81,12 +87,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApprovalOfRequest)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApprovalOfCharge)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.RequestId }) |

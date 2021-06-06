@@ -48,6 +48,9 @@ namespace ShadFrame.Models
         public DbSet<SupplierPart> supplierParts { get; set; }
         public DbSet<PaymentStatus> PaymentStatus { get; set; }
         public DbSet<Storage> Storage { get; set; }
+        public DbSet<ApprovalMessages> ApprovalMessages { get; set; }
+        public DbSet<CApprovalMessages> CApprovalMessages { get; set; }
+        public DbSet<PartsCollection> PartsCollections { get; set; }
 
         public static ApplicationDbContext Create()
         {

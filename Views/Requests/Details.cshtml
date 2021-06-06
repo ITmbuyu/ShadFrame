@@ -11,6 +11,22 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.ApprovalMessages.AMessages)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApprovalMessages.AMessages)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CApprovalMessages.CMessages)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CApprovalMessages.CMessages)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Colour.Name)
         </dt>
 
@@ -88,22 +104,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.UserId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ApprovalOfRequest)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApprovalOfRequest)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ApprovalOfCharge)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApprovalOfCharge)
         </dd>
 
     </dl>
